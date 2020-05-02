@@ -52,19 +52,18 @@ const Login = () => {
 			return { ...state, [e.target.name]: e.target.value };
 		});
 	};
-};
-const handleLoginSubmit = (e) => {
-	e.preventDefault();
-	console.log("did I go blammo?");
-	loginMutation({
-		variables: { input: userObject },
-		update: (cache) => {
-			console.log(cache);
-			// const data = cache.readQuery({ query: LOGIN_QUERY });
-			// data.userObject = [loginMutation];
-			// cache.writeQuery({ query: LOGIN_QUERY }, data);
-		},
-	});
+
+	const handleLoginSubmit = (e, loginObject) => {
+		e.preventDefault();
+		console.log("did I go blammo?");
+		loginMutation({
+			variables: { input: loginObject },
+			update: (cache) => {
+				console.log(cache);
+			},
+		});
+	};
+
 	React.useEffect(() => {
 		document.documentElement.scrollTop = 0;
 		document.scrollingElement.scrollTop = 0;
@@ -203,7 +202,10 @@ const handleLoginSubmit = (e) => {
 													color="primary"
 													type="button"
 													onClick={(e) =>
-														handleLoginSubmit(e)
+														handleLoginSubmit(
+															e,
+															userObject
+														)
 													}
 												>
 													Sign in
