@@ -65,7 +65,22 @@ const handleLoginSubmit = (e) => {
 			// cache.writeQuery({ query: LOGIN_QUERY }, data);
 		},
 
+<<<<<<< HEAD
 	});
+=======
+	const handleLoginSubmit = (e) => {
+		e.preventDefault();
+		console.log("did I go blammo?");
+		loginMutation({
+			variables: { input: userObject },
+			update: (cache) => {
+				const data = cache.readQuery({ query: LOGIN_QUERY });
+				
+				cache.writeQuery({ query: LOGIN_QUERY }, data);
+			},
+		});
+	};
+>>>>>>> parent of e0cd178... Attempt 9000
 
 	React.useEffect(() => {
 		document.documentElement.scrollTop = 0;
