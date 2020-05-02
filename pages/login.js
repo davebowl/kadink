@@ -58,7 +58,7 @@ const Login = () => {
 		console.log("did I go blammo?");
 		loginMutation({
 			variables: { input: userObject },
-			update: (cache, { data: { loginMutation } }) => {
+			update: (cache) => {
 				const data = cache.readQuery({ query: LOGIN_QUERY });
 				
 				cache.writeQuery({ query: LOGIN_QUERY }, data);
