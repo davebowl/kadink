@@ -34,7 +34,7 @@ import {
 } from "reactstrap";
 import { LOGIN_QUERY } from "../queries/login";
 import { useMutation } from "@apollo/react-hooks";
-import Header from "../components/header";
+// import Header from "../components/header";
 
 // core components
 // import DemoNavbar from "components/Navbars/DemoNavbar.js";
@@ -58,7 +58,7 @@ const Login = () => {
 		console.log("did I go blammo?");
 		loginMutation({
 			variables: { input: loginObject },
-			update: (cache, { data: { loginMutation } }) => {
+			update: (cache, { data: { login } }) => {
 				console.log(cache);
 				console.log(data)
 			},
