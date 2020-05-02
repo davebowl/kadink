@@ -32,7 +32,7 @@ import {
 	Row,
 	Col,
 } from "reactstrap";
-import { loginQuery } from "../queries/login";
+import { LOGIN_QUERY } from "../queries/login";
 import { useMutation } from "@apollo/react-hooks";
 import Header from "../components/header";
 
@@ -45,7 +45,7 @@ const Login = () => {
 		password: "",
 	});
 	const main = React.useRef(null);
-	const [loginMutation] = useMutation(loginQuery)
+	const [loginMutation] = useMutation(LOGIN_QUERY);
 	const handleObjectChange = (e) => {
 		e.persist();
 		setUserObject((state) => {
@@ -55,9 +55,16 @@ const Login = () => {
 
 	const handleLoginSubmit = (e) => {
 		e.preventDefault();
-		console.log('did I go blammo?')
-		loginMutation({ variables: { input: userObject }})
-	}
+		console.log("did I go blammo?");
+		loginMutation({
+			variables: { input: userObject },
+			update: (cache, { data: { loginMutation } }) => {
+				const data = cache.readQuery({ query: LOGIN_QUERY });
+				
+				cache.writeQuery({ query: LOGIN_QUERY }, data);
+			},
+		});
+	};
 
 	React.useEffect(() => {
 		document.documentElement.scrollTop = 0;
@@ -196,7 +203,9 @@ const Login = () => {
 													className="my-4"
 													color="primary"
 													type="button"
-													onClick={e => handleLoginSubmit(e)}
+													onClick={(e) =>
+														handleLoginSubmit(e)
+													}
 												>
 													Sign in
 												</Button>

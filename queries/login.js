@@ -1,6 +1,6 @@
 import gql from "graphql-tag";
 
-export const loginQuery = gql`
+export const LOGIN_QUERY = gql`
         mutation login($input: UsersPermissionsLoginInput!) {
             login(input: $input) {
             jwt
