@@ -12,15 +12,16 @@ const link = createHttpLink({
 	uri: GRAPHQL_URL + "/graphql",
 });
 
-
 // Export a HOC from next-with-apollo
 // Docs: https://www.npmjs.com/package/next-with-apollo
-export default withApollo(({ initialState }) => {
+export default withApollo(
+	// You can get headers and ctx (context) from the callback params
+	// e.g. ({ headers, ctx, initialState })
+	({ initialState }) =>
 		new ApolloClient({
-			// ssrMode: Boolean(ctx),
 			link: link,
 			cache: new InMemoryCache()
 				//  rehydrate the cache using the initial data passed from the server:
 				.restore(initialState || {}),
 		})
-	} );
+);
