@@ -59,7 +59,7 @@ const Login = () => {
 		loginMutation({
 			variables: { input: loginObject },
 			update: (cache) => {
-				console.log(cache);
+				console.log(cache.readQuery({query: LOGIN_QUERY}));
 			},
 		});
 	};
