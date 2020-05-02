@@ -15,9 +15,9 @@ const link = createHttpLink({
 
 // Export a HOC from next-with-apollo
 // Docs: https://www.npmjs.com/package/next-with-apollo
-export default withApollo(({ initialState, ctx }) => {
+export default withApollo(({ initialState }) => {
 		new ApolloClient({
-			ssrMode: Boolean(ctx),
+			// ssrMode: Boolean(ctx),
 			link: link,
 			cache: new InMemoryCache()
 				//  rehydrate the cache using the initial data passed from the server:
