@@ -32,7 +32,7 @@ import {
 	Row,
 	Col,
 } from "reactstrap";
-import { LOGIN_QUERY } from "../queries/login";
+import { LOGIN_QUERY, Login } from "../queries/login";
 import { useMutation } from "@apollo/react-hooks";
 // import Header from "../components/header";
 
