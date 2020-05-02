@@ -52,18 +52,20 @@ const Login = () => {
 			return { ...state, [e.target.name]: e.target.value };
 		});
 	};
-}
-	const handleLoginSubmit = (e) => {
-		e.preventDefault();
-		console.log("did I go blammo?");
-		loginMutation({
-			variables: { input: userObject },
-			update: (cache, { data: { loginMutation } }) => {
-				const data = cache.readQuery({ query: LOGIN_QUERY });
-				data.userObject = [loginMutation];
-				cache.writeQuery({ query: LOGIN_QUERY }, data);
-		}
-		});
+};
+const handleLoginSubmit = (e) => {
+	e.preventDefault();
+	console.log("did I go blammo?");
+	loginMutation({
+		variables: { input: userObject },
+		update: (cache, ) => {
+			console.log(cache)
+			// const data = cache.readQuery({ query: LOGIN_QUERY });
+			// data.userObject = [loginMutation];
+			// cache.writeQuery({ query: LOGIN_QUERY }, data);
+		},
+
+	});
 
 	React.useEffect(() => {
 		document.documentElement.scrollTop = 0;
