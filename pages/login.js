@@ -53,12 +53,12 @@ const Login = () => {
 		});
 	};
 
-	const handleLoginSubmit = (e, loginObject) => {
+	const handleLoginSubmit = (e, loginObject ) => {
 		e.preventDefault();
 		console.log("did I go blammo?");
 		loginMutation({
 			variables: { input: loginObject },
-			update: (cache, { data: { login } }) => {
+			update: (cache, { }) => {
 				console.log(cache);
 				console.log(data)
 			},
