@@ -27,5 +27,8 @@
     "reactstrap": "^8.4.1",
     "sass": "^1.26.3",
     "url-loader": "^4.1.0"
+  },
+  "optionalDependencies": {
+    "fsevents": "^2.1.3"
   }
 }
