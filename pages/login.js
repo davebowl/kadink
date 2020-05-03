@@ -53,7 +53,7 @@ const Login = () => {
 		});
 	};
 
-	const handleLoginSubmit = (e, loginObject, res, {store} ) => {
+	const handleLoginSubmit = (e, loginObject, res ) => {
 		e.preventDefault();
 		console.log("did I go blammo?");
 		loginMutation({
